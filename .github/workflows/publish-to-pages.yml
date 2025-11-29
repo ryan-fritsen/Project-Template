@@ -24,7 +24,7 @@ jobs:
       
       - name: Copy file to Pages repo
         run: |
-          cp public-repo/summaries/test.md pages-repo/Project-Template/templates/test.md
+          cp public-repo/summaries/test.md pages-repo/templates/test.md
           # Add more cp commands if you need to copy multiple files or assets
       
       - name: Commit and push changes
