@@ -1,0 +1,38 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # or whatever your default branch is
+    paths:
+      - 'path/to/your/file.html'  # Update this to your actual file path
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+        with:
+          path: public-repo
+      
+      - name: Checkout private Pages repo
+        uses: actions/checkout@v4
+        with:
+          repository: your-username/your-private-repo  # Update this
+          token: ${{ secrets.PAGES_REPO_TOKEN }}
+          path: pages-repo
+      
+      - name: Copy file to Pages repo
+        run: |
+          cp public-repo/path/to/your/file.html pages-repo/destination/path/file.html
+          # Add more cp commands if you need to copy multiple files or assets
+      
+      - name: Commit and push changes
+        run: |
+          cd pages-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update from project repo: ${{ github.event.head_commit.message }}" && git push)
