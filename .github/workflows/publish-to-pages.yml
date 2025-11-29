@@ -5,7 +5,7 @@ on:
     branches:
       - main  # or whatever your default branch is
     paths:
-      - 'path/to/your/file.html'  # Update this to your actual file path
+      - 'ryan-fritsen.github.io/summaries/test.md'  # Update this to your actual file path
 
 jobs:
   publish:
@@ -26,7 +26,7 @@ jobs:
       
       - name: Copy file to Pages repo
         run: |
-          cp public-repo/path/to/your/file.html pages-repo/destination/path/file.html
+          cp ryan-fritsen.github.io/summaries/test.md Project-Template/templates/test.md
           # Add more cp commands if you need to copy multiple files or assets
       
       - name: Commit and push changes
