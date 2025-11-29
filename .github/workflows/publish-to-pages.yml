@@ -1,12 +1,10 @@
 name: Publish to GitHub Pages
-
 on:
   push:
     branches:
-      - main  # or whatever your default branch is
+      - main
     paths:
-      - 'ryan-fritsen.github.io/summaries/test.md'  # Update this to your actual file path
-
+      - 'summaries/test.md'  # Path within your public repo
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -20,13 +18,13 @@ jobs:
       - name: Checkout private Pages repo
         uses: actions/checkout@v4
         with:
-          repository: your-username/your-private-repo  # Update this
+          repository: ryan-fritsen/ryan-fritsen.github.io  # Your private repo
           token: ${{ secrets.PAGES_REPO_TOKEN }}
           path: pages-repo
       
       - name: Copy file to Pages repo
         run: |
-          cp ryan-fritsen.github.io/summaries/test.md Project-Template/templates/test.md
+          cp public-repo/summaries/test.md pages-repo/Project-Template/templates/test.md
           # Add more cp commands if you need to copy multiple files or assets
       
       - name: Commit and push changes
