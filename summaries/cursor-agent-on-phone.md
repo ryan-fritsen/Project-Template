@@ -61,7 +61,25 @@ These use the other app, not the Cursor app:
 
 ## Questions
 
-Answers to follow-up questions will be added here.
+### How do I read this from my phone and still open it on the desktop?
+
+Read one published page in both places. Keep editing `summaries/cursor-agent-on-phone.md` in this repo.
+
+The page belongs on the site you already have: [ryan-fritsen.github.io](https://ryan-fritsen.github.io/). That site is public, so this reminder will be public too.
+
+**Phone.** Bookmark the page, then use Share → Add to Home Screen. Open that icon when you are away from the desk.
+
+**Desktop.** Use the same bookmark. Open this file in the repo when you want to change it.
+
+The publish workflow does not put this file on the site yet. On a push to `main` it copies `summaries/test.md` into `templates/` in `ryan-fritsen/ryan-fritsen.github.io`. The site only turns markdown in `content/` into HTML, and it writes those pages to `output/posts/`.
+
+A publish that you can actually open would:
+
+1. Copy this file to `content/cursor-agent-on-phone.md`, with a `title` in the frontmatter.
+2. Run `render.py` in the Pages repo.
+3. Commit `content/`, `index.html`, and `output/posts/`.
+
+The index links to `posts/<slug>.html`, and the renderer writes `output/posts/<slug>.html`. [https://ryan-fritsen.github.io/posts/state-of-tech.html](https://ryan-fritsen.github.io/posts/state-of-tech.html) is a 404. [https://ryan-fritsen.github.io/output/posts/state-of-tech.html](https://ryan-fritsen.github.io/output/posts/state-of-tech.html) loads. Point the index at `output/posts/` when this page is wired up, and bookmark the URL that returns the page.
 
 ## Sources
 
